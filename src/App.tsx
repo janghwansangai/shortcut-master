@@ -125,17 +125,17 @@ export default function App() {
             )}
 
             {/* 스탯 및 종료 영역 */}
-            <div className="flex items-center gap-3 md:gap-5 2xl:gap-6 flex-shrink text-lg md:text-xl 2xl:text-3xl whitespace-nowrap overflow-hidden">
-              <div className="font-semibold text-blue-300 truncate">점수:{score}</div>
-              <div className="font-semibold text-purple-300 truncate">콤보:x{combo}</div>
-              <div className="font-semibold text-pink-300 truncate">샷:{shotsLeft}</div>
+            <div className="flex items-center gap-2 md:gap-4 flex-shrink-0 text-base md:text-xl 2xl:text-2xl whitespace-nowrap">
+              <div className="font-semibold text-blue-300"><span className="hidden sm:inline">점수:</span><span className="sm:hidden">S:</span>{score}</div>
+              <div className="font-semibold text-purple-300"><span className="hidden sm:inline">콤보:</span><span className="sm:hidden">C:</span>{combo}</div>
+              <div className="font-semibold text-pink-300"><span className="hidden sm:inline">샷:</span><span className="sm:hidden">X:</span>{shotsLeft}</div>
               <button 
                 onClick={() => {
                   setIsGameOver(true);
                 }} 
-                className="ml-2 px-4 py-1 md:py-2 bg-red-600/80 hover:bg-red-500 text-white font-bold rounded-lg transition-colors border border-red-400 shadow-[0_0_10px_rgba(220,38,38,0.5)]"
+                className="ml-1 md:ml-2 px-3 md:px-4 py-1 md:py-2 bg-red-600/80 hover:bg-red-500 text-white font-bold rounded-lg transition-colors border border-red-400 shadow-[0_0_10px_rgba(220,38,38,0.5)]"
               >
-                종료
+                <span className="hidden sm:inline">종료</span><span className="sm:hidden">끝</span>
               </button>
             </div>
           </div>

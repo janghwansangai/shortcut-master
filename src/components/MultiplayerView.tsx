@@ -381,9 +381,9 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
 
           {/* 중앙: 미션 영역 (절대 위치로 완벽한 중앙 정렬) */}
           {currentMission ? (
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-yellow-500/10 px-2 py-1 rounded-md border border-yellow-500/30 w-max z-20">
-              <span className="text-xs md:text-sm font-bold text-yellow-400 mr-1.5">미션:</span>
-              <span className="text-sm md:text-base font-black text-white tracking-tight whitespace-nowrap">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-yellow-500/20 px-2 py-0.5 rounded-lg border border-yellow-500/50 w-max z-20 shadow-[0_0_10px_rgba(234,179,8,0.3)]">
+              <span className="text-[10px] md:text-xs font-bold text-yellow-400 mr-1">미션:</span>
+              <span className="text-base md:text-xl font-black text-white tracking-tight whitespace-nowrap drop-shadow-lg">
                 {currentMission.action}
               </span>
             </div>

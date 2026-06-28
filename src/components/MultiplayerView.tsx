@@ -371,34 +371,31 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
       {/* My View */}
       <div id="player-me" className="flex-1 min-w-[200px] w-full flex flex-col justify-start shrink-0 h-full relative pt-2" style={{ maxWidth: 'calc((100vh - 145px) * 0.75)' }}>
         {/* 상단 통합 메뉴바 */}
-        <div className="flex items-center justify-center bg-gray-900/80 backdrop-blur-md px-2 md:px-5 py-2 md:py-3 rounded-xl border border-gray-700 shadow-xl mb-1 z-10 relative w-full gap-2 md:gap-4 flex-wrap shrink-0 h-fit">
+        <div className="flex items-center justify-between bg-gray-900/80 backdrop-blur-md px-1.5 py-1 rounded-xl border border-gray-700 shadow-xl mb-1 z-10 relative w-full gap-1 shrink-0 h-fit">
           {/* 나의 아이디 및 미션 영역 */}
-          <div className="flex items-center flex-shrink-0 gap-2 md:gap-3">
-            <span className="text-white font-black text-sm md:text-lg bg-blue-600/80 px-2 md:px-3 py-1 rounded border border-blue-400 shrink-0">
-              {playerName}<span className="hidden sm:inline">(나)</span>
+          <div className="flex items-center flex-shrink-1 gap-1 overflow-hidden">
+            <span className="text-white font-black text-xs bg-blue-600/80 px-1.5 py-0.5 rounded border border-blue-400 shrink-0 truncate max-w-[60px] sm:max-w-[100px]">
+              {playerName}
             </span>
             {currentMission ? (
-              <div className="flex items-center bg-yellow-500/20 px-2 md:px-3 py-1 rounded-lg border border-yellow-500/50 shadow-[0_0_10px_rgba(234,179,8,0.2)]">
-                <span className="text-sm md:text-lg font-black text-yellow-400 mr-1 md:mr-2 animate-pulse">🔥 <span className="hidden sm:inline">미션:</span></span>
-                <span className="text-sm md:text-xl font-bold text-white tracking-widest bg-gray-900/50 px-2 py-1 rounded-md border border-gray-700">
+              <div className="flex items-center bg-yellow-500/20 px-1.5 py-0.5 rounded-md border border-yellow-500/50 shrink-0">
+                <span className="text-xs font-bold text-yellow-300 tracking-tight whitespace-nowrap">
                   {currentMission.action}
                 </span>
               </div>
-            ) : (
-              <div className="flex-shrink-0 w-10"></div>
-            )}
+            ) : null}
           </div>
 
           {/* 스탯 및 종료 영역 */}
-          <div className="flex items-center gap-2 md:gap-4 flex-shrink-0 text-sm md:text-lg whitespace-nowrap">
+          <div className="flex items-center gap-1.5 flex-shrink-0 text-xs whitespace-nowrap">
             <div className="font-semibold text-blue-300">S:{score}</div>
             <div className="font-semibold text-purple-300">C:{combo}</div>
             <div className="font-semibold text-pink-300">X:{shotsLeft}</div>
             <button 
               onClick={onExit}
-              className="ml-1 px-2 py-1 md:px-3 md:py-1.5 bg-red-600/80 hover:bg-red-500 text-white font-bold rounded-lg transition-colors border border-red-400 shadow-[0_0_5px_rgba(220,38,38,0.5)]"
+              className="ml-0.5 px-1.5 py-0.5 bg-red-600/80 hover:bg-red-500 text-white font-black rounded transition-colors border border-red-400"
             >
-              나가기
+              X
             </button>
           </div>
         </div>

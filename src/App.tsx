@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { GameCanvas } from './components/GameCanvas';
 import type { Shortcut } from './game/ShortcutTable';
 import { MultiplayerView } from './components/MultiplayerView';
@@ -13,7 +13,6 @@ export default function App() {
   const [popups, setPopups] = useState<Array<{id: number, shortcut: Shortcut, x: number, y: number, isMissionBonus: boolean}>>([]);
   const [isGameOver, setIsGameOver] = useState(false);
   const [isShake, setIsShake] = useState(false);
-  const [gameState, setGameState] = useState<'playing' | 'gameover'>('playing');
   const [popupIdCounter, setPopupIdCounter] = useState(0);
 
   const [currentMission, setCurrentMission] = useState<Shortcut | null>(null);
@@ -50,8 +49,7 @@ export default function App() {
     }
   }, []);
 
-  const handleGameOver = useCallback((finalScore: number) => {
-    setGameState('gameover');
+  const handleGameOver = useCallback(() => {
     setIsGameOver(true);
   }, []);
 

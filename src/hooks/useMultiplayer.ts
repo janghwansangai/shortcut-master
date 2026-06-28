@@ -8,6 +8,7 @@ export type PlayerState = {
   score: number;
   gridState: any;
   isAI: boolean;
+  isDead: boolean;
 };
 
 export type RoomState = {

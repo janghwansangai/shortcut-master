@@ -1,7 +1,7 @@
 import { Grid } from './Grid';
 import { Shooter } from './Shooter';
 import { Bubble } from './Bubble';
-import { isModifier, getCombinationType, getRandomWeightedKey, getCurrentTier, SHORTCUTS } from './ShortcutTable';
+import { isModifier, getRandomWeightedKey, getCurrentTier, SHORTCUTS } from './ShortcutTable';
 import type { Shortcut } from './ShortcutTable';
 import { audioFX } from './AudioFX';
 

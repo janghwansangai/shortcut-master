@@ -139,7 +139,7 @@ export class Grid {
     const startBubble = this.bubbles[startRow][startCol];
     if (!startBubble) return null;
 
-    let bestMatch: { matchedBubbles: Bubble[], shortcut: Shortcut } | null = null;
+    let bestMatch: any = null;
     let maxKeys = 0;
 
     // Helper to traverse and collect paths up to length 3
@@ -239,7 +239,6 @@ export class Grid {
     if (!startBubble || startBubble.key === activeKey) return 'none';
 
     let canComplete3Key = false;
-    let formsShortcut = false;
 
     // Check if they are part of any shortcut together
     const matchingShortcuts = SHORTCUTS.filter(sc => sc.keys.includes(activeKey) && sc.keys.includes(startBubble.key));

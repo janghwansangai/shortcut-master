@@ -13,7 +13,7 @@ interface MultiplayerViewProps {
 }
 
 export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }) => {
-  const { socket, myId, roomState, joinRoom, toggleReady, sendGridUpdate, sendAttack, sendPlayerDied } = useMultiplayer();
+  const { myId, roomState, joinRoom, toggleReady, sendGridUpdate, sendAttack, sendPlayerDied } = useMultiplayer();
   const [roomId, setRoomId] = useState('');
   const [playerName, setPlayerName] = useState(`Player_${Math.floor(Math.random() * 1000)}`);
   
@@ -33,13 +33,10 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
   const [isGameOver, setIsGameOver] = useState(false);
   const [isShake, setIsShake] = useState(false);
   const [showExplosion, setShowExplosion] = useState(false);
-  const [visualMissiles, setVisualMissiles] = useState<{id: number, type: string, senderName: string, startX: number, startY: number, dx: number, dy: number}[]>([]);
+  const [visualMissiles, setVisualMissiles] = useState<{id: number, type: string, senderName: string, startX: number, startY: number, dx: number, dy: number, isOutgoing?: boolean}[]>([]);
   const [popups, setPopups] = useState<{id: number, shortcut: Shortcut, x: number, y: number, isMissionBonus: boolean}[]>([]);
   const [popupIdCounter, setPopupIdCounter] = useState(0);
   const [roomWinner, setRoomWinner] = useState<string | null>(null);
-  
-  // Attacks visual state
-  const [incomingAttacks, setIncomingAttacks] = useState<any[]>([]);
 
   // Setup AI if mode is 'ai'
   useEffect(() => {
@@ -308,7 +305,7 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
               </span>
             </li>
           ))}
-          {mode === 'ai' && (
+          {(mode as string) === 'ai' && (
             <li className="flex justify-between items-center bg-gray-700 p-5 2xl:p-8 rounded-2xl border border-gray-600 shadow-inner">
               <span>AI Bot (Medium)</span>
               <span className="text-green-400 drop-shadow-[0_0_8px_rgba(74,222,128,0.5)]">Ready!</span>

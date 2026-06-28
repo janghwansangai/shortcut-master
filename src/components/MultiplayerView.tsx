@@ -498,30 +498,30 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
           })}
 
           {isGameOver && (
-            <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center rounded-xl backdrop-blur-sm z-50">
-              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-red-500 mb-8 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)] text-center leading-tight">GAME<br className="sm:hidden"/> OVER</h2>
+            <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-start overflow-y-auto rounded-xl backdrop-blur-sm z-50 p-4 md:p-8 custom-scrollbar">
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-red-500 mt-4 md:mt-8 mb-6 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)] text-center leading-tight shrink-0">GAME<br className="sm:hidden"/> OVER</h2>
               {roomWinner ? (
                 (roomWinner === myId || roomWinner === playerName) ? (
-                  <div className="bg-yellow-900/50 p-8 md:p-12 rounded-3xl mb-8 text-center border-4 border-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.5)]">
-                    <span className="block text-yellow-400 text-3xl font-black mb-4 animate-bounce">👑 WINNER 👑</span>
-                    <span className="block text-6xl md:text-7xl font-black text-white">당신 (You)</span>
+                  <div className="bg-yellow-900/50 p-6 md:p-8 rounded-2xl mb-6 text-center border-4 border-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.5)] w-full max-w-sm shrink-0">
+                    <span className="block text-yellow-400 text-xl md:text-2xl font-black mb-3 animate-bounce">👑 WINNER 👑</span>
+                    <span className="block text-4xl md:text-5xl font-black text-white">당신 (You)</span>
                   </div>
                 ) : (
-                  <div className="bg-red-900/50 p-8 md:p-12 rounded-3xl mb-8 text-center border-4 border-red-500 shadow-[0_0_30px_rgba(239,68,68,0.5)]">
-                    <span className="block text-red-400 text-3xl font-black mb-4">💀 LOSER 💀</span>
-                    <span className="block text-6xl md:text-7xl font-black text-gray-300">당신 (You)</span>
-                    <span className="block text-gray-400 text-xl mt-4 font-bold">승리자: {roomWinner}</span>
+                  <div className="bg-red-900/50 p-6 md:p-8 rounded-2xl mb-6 text-center border-4 border-red-500 shadow-[0_0_30px_rgba(239,68,68,0.5)] w-full max-w-sm shrink-0">
+                    <span className="block text-red-400 text-xl md:text-2xl font-black mb-3">💀 LOSER 💀</span>
+                    <span className="block text-4xl md:text-5xl font-black text-gray-300">당신 (You)</span>
+                    <span className="block text-gray-400 text-base md:text-lg mt-3 font-bold">승리자: {roomWinner}</span>
                   </div>
                 )
               ) : (
-                <div className="bg-gray-800 p-8 md:p-12 rounded-3xl mb-8 text-center border-2 border-gray-700 shadow-2xl">
-                  <span className="block text-gray-400 text-2xl uppercase font-bold mb-2">Final Score</span>
-                  <span className="block text-7xl font-bold text-blue-400 font-mono">{score}</span>
+                <div className="bg-gray-800 p-6 md:p-8 rounded-2xl mb-6 text-center border-2 border-gray-700 shadow-2xl w-full max-w-sm shrink-0">
+                  <span className="block text-gray-400 text-lg md:text-xl uppercase font-bold mb-2">Final Score</span>
+                  <span className="block text-5xl md:text-6xl font-bold text-blue-400 font-mono">{score}</span>
                 </div>
               )}
               <button  
                 onClick={onExit}
-                className="px-10 py-5 md:py-6 text-2xl md:text-3xl bg-blue-600 hover:bg-blue-500 text-white font-black rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-transform hover:scale-105 active:scale-95"
+                className="px-6 md:px-8 py-3 md:py-4 text-xl md:text-2xl bg-blue-600 hover:bg-blue-500 text-white font-black rounded-xl shadow-[0_0_15px_rgba(37,99,235,0.5)] transition-transform hover:scale-105 active:scale-95 shrink-0"
               >
                 로비로 돌아가기
               </button>

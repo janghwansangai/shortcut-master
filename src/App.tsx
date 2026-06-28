@@ -194,16 +194,17 @@ export default function App() {
         ))}
 
         {isGameOver && (
-          <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center rounded-xl backdrop-blur-sm z-50">
-            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-red-500 mb-6 tracking-widest drop-shadow-[0_0_20px_rgba(239,68,68,0.8)] text-center leading-tight">GAME<br className="sm:hidden"/> OVER</h2>
-            <p className="text-gray-300 text-3xl md:text-4xl mb-12 font-medium">단축키를 너무 많이 쌓았어요!</p>
-            <div className="bg-gray-800 p-10 md:p-14 rounded-3xl mb-10 border border-gray-700 text-center shadow-2xl w-full max-w-lg md:max-w-2xl">
-              <span className="block text-gray-400 text-xl md:text-2xl uppercase font-bold mb-4">Final Score</span>
-              <span className="block text-7xl md:text-8xl font-mono text-blue-400 font-black">{score}</span>
+          <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-start overflow-y-auto rounded-xl backdrop-blur-sm z-50 p-4 md:p-8 custom-scrollbar">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-red-500 mt-4 md:mt-8 mb-4 tracking-widest drop-shadow-[0_0_20px_rgba(239,68,68,0.8)] text-center leading-tight shrink-0">GAME<br className="sm:hidden"/> OVER</h2>
+            <p className="text-gray-300 text-xl md:text-2xl lg:text-3xl mb-6 md:mb-8 font-medium text-center shrink-0">단축키를 너무 많이 쌓았어요!</p>
+            
+            <div className="bg-gray-800 p-6 md:p-8 rounded-2xl mb-6 md:mb-8 border border-gray-700 text-center shadow-2xl w-full max-w-sm md:max-w-md shrink-0">
+              <span className="block text-gray-400 text-base md:text-lg uppercase font-bold mb-2">Final Score</span>
+              <span className="block text-5xl md:text-6xl lg:text-7xl font-mono text-blue-400 font-black">{score}</span>
             </div>
 
-            <div className="flex flex-col items-center mb-10 bg-gray-900/80 p-10 md:p-14 rounded-3xl border border-gray-600 w-full max-w-lg md:max-w-2xl shadow-xl">
-              <h3 className="text-white text-2xl md:text-3xl font-bold mb-8 flex items-center gap-3">
+            <div className="flex flex-col items-center mb-6 bg-gray-900/80 p-6 md:p-8 rounded-2xl border border-gray-600 w-full max-w-sm md:max-w-md shadow-xl shrink-0">
+              <h3 className="text-white text-lg md:text-xl lg:text-2xl font-bold mb-4 flex items-center gap-2">
                 🏆 명예의 전당 등록
               </h3>
               <input 
@@ -211,12 +212,12 @@ export default function App() {
                 value={playerNameInput}
                 onChange={e => setPlayerNameInput(e.target.value)}
                 placeholder="이름 (미입력시 아무개)"
-                className="w-full p-5 md:p-6 rounded-2xl bg-gray-800 text-white border-2 border-gray-600 mb-8 text-center text-2xl md:text-3xl focus:border-blue-500 outline-none transition-colors"
+                className="w-full p-3 md:p-4 rounded-xl bg-gray-800 text-white border-2 border-gray-600 mb-6 text-center text-lg md:text-xl focus:border-blue-500 outline-none transition-colors"
                 maxLength={10}
               />
               <button 
                 onClick={saveRanking}
-                className="w-full px-8 py-5 md:py-6 bg-blue-600 hover:bg-blue-500 text-white font-black text-2xl md:text-3xl rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all transform hover:scale-105 active:scale-95"
+                className="w-full px-6 py-4 md:py-5 bg-blue-600 hover:bg-blue-500 text-white font-black text-lg md:text-xl rounded-xl shadow-[0_0_15px_rgba(37,99,235,0.5)] transition-all transform hover:scale-105 active:scale-95"
               >
                 기록 저장 및 로비로
               </button>

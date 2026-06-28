@@ -13,7 +13,7 @@ interface MultiplayerViewProps {
 }
 
 export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }) => {
-  const { myId, roomState, joinRoom, toggleReady, sendGridUpdate, sendAttack, sendPlayerDied } = useMultiplayer();
+  const { myId, roomState, joinRoom, toggleReady, sendGridUpdate, sendAttack, sendPlayerDied, socket } = useMultiplayer();
   const [roomId, setRoomId] = useState('');
   const [playerName, setPlayerName] = useState(`Player_${Math.floor(Math.random() * 1000)}`);
   
@@ -37,6 +37,19 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
   const [popups, setPopups] = useState<{id: number, shortcut: Shortcut, x: number, y: number, isMissionBonus: boolean}[]>([]);
   const [popupIdCounter, setPopupIdCounter] = useState(0);
   const [roomWinner, setRoomWinner] = useState<string | null>(null);
+  const [isTrafficOverload, setIsTrafficOverload] = useState(false);
+
+  useEffect(() => {
+    if (socket) {
+      const handleTrafficWarning = (isOverloaded: boolean) => {
+        setIsTrafficOverload(isOverloaded);
+      };
+      socket.on('traffic_warning', handleTrafficWarning);
+      return () => {
+        socket.off('traffic_warning', handleTrafficWarning);
+      };
+    }
+  }, [socket]);
 
   // Setup AI if mode is 'ai'
   useEffect(() => {
@@ -591,7 +604,11 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
               </div>
               <div className="w-full aspect-[3/4] bg-gray-900/40 rounded-lg overflow-hidden border-2 border-gray-700 p-0 relative">
                 {/* Render Mini Grid */}
-                {p.gridState ? (
+                {isTrafficOverload ? (
+                  <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center p-4 text-center z-10">
+                    <span className="text-red-500 font-bold text-lg md:text-xl break-keep animate-pulse">⚠️ 트래픽 초과<br/>실시간 모니터링 차단</span>
+                  </div>
+                ) : p.gridState ? (
                   <div className="absolute inset-0">
                     {p.gridState.map((row: string[], r: number) => {
                       const isEven = r % 2 === 0;

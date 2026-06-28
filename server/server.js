@@ -17,8 +17,17 @@ const io = new Server(server, {
 // State
 const rooms = {}; // { roomId: { players: { socketId: { name, isReady, score, gridState } }, status: 'waiting' | 'playing' } }
 
+const TRAFFIC_OVERLOAD_THRESHOLD = 50;
+
+function checkTrafficAndEmit() {
+  const isOverloaded = io.engine.clientsCount > TRAFFIC_OVERLOAD_THRESHOLD;
+  io.emit('traffic_warning', isOverloaded);
+  return isOverloaded;
+}
+
 io.on('connection', (socket) => {
   console.log(`User connected: ${socket.id}`);
+  checkTrafficAndEmit();
 
   // Create or Join Room
   socket.on('join_room', ({ roomId, playerName, isAI }) => {
@@ -73,12 +82,15 @@ io.on('connection', (socket) => {
       if (rooms[roomId].players[socket.id]) {
         rooms[roomId].players[socket.id].gridState = snapshot.gridState;
         rooms[roomId].players[socket.id].score = snapshot.score;
-        // Broadcast to others (for mini maps)
-        socket.to(roomId).emit('player_grid_updated', {
-          playerId: socket.id,
-          gridState: snapshot.gridState,
-          score: snapshot.score
-        });
+        // Broadcast to others (for mini maps) ONLY IF not overloaded
+        const isOverloaded = io.engine.clientsCount > TRAFFIC_OVERLOAD_THRESHOLD;
+        if (!isOverloaded) {
+          socket.to(roomId).emit('player_grid_updated', {
+            playerId: socket.id,
+            gridState: snapshot.gridState,
+            score: snapshot.score
+          });
+        }
       }
     }
   });
@@ -141,6 +153,7 @@ io.on('connection', (socket) => {
       }
     }
     console.log(`User disconnected: ${socket.id}`);
+    checkTrafficAndEmit();
   });
 });
 

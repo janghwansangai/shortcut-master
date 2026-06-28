@@ -196,7 +196,7 @@ export default function App() {
 
         {isGameOver && (
           <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center rounded-xl backdrop-blur-sm z-50">
-            <h2 className="text-7xl md:text-8xl font-black text-red-500 mb-6 tracking-widest drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]">GAME OVER</h2>
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-red-500 mb-6 tracking-widest drop-shadow-[0_0_20px_rgba(239,68,68,0.8)] text-center leading-tight">GAME<br className="sm:hidden"/> OVER</h2>
             <p className="text-gray-300 text-3xl md:text-4xl mb-12 font-medium">단축키를 너무 많이 쌓았어요!</p>
             <div className="bg-gray-800 p-10 md:p-14 rounded-3xl mb-10 border border-gray-700 text-center shadow-2xl w-full max-w-lg md:max-w-2xl">
               <span className="block text-gray-400 text-xl md:text-2xl uppercase font-bold mb-4">Final Score</span>

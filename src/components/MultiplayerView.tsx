@@ -503,7 +503,7 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
 
           {isGameOver && (
             <div className="absolute inset-0 bg-black/80 flex flex-col items-center justify-center rounded-xl backdrop-blur-sm z-50">
-              <h2 className="text-7xl md:text-8xl font-black text-red-500 mb-8 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)]">GAME OVER</h2>
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-red-500 mb-8 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)] text-center leading-tight">GAME<br className="sm:hidden"/> OVER</h2>
               {roomWinner ? (
                 (roomWinner === myId || roomWinner === playerName) ? (
                   <div className="bg-yellow-900/50 p-8 md:p-12 rounded-3xl mb-8 text-center border-4 border-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.5)]">

@@ -371,29 +371,32 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
       {/* My View */}
       <div id="player-me" className="flex-1 min-w-[200px] w-full flex flex-col justify-start shrink-0 h-full relative pt-2" style={{ maxWidth: 'calc((100vh - 145px) * 0.75)' }}>
         {/* 상단 통합 메뉴바 */}
-        <div className="flex items-center justify-between bg-gray-900/80 backdrop-blur-md px-1.5 py-1 rounded-xl border border-gray-700 shadow-xl mb-1 z-10 relative w-full gap-1 shrink-0 h-fit">
-          {/* 나의 아이디 및 미션 영역 */}
-          <div className="flex items-center flex-shrink-1 gap-1 overflow-hidden">
-            <span className="text-white font-black text-xs bg-blue-600/80 px-1.5 py-0.5 rounded border border-blue-400 shrink-0 truncate max-w-[60px] sm:max-w-[100px]">
+        <div className="flex items-center justify-between bg-gray-900/80 backdrop-blur-md px-2 py-2 md:py-3 rounded-xl border border-gray-700 shadow-xl mb-1 z-10 relative w-full shrink-0 h-fit overflow-hidden">
+          {/* 왼쪽: 나의 아이디 */}
+          <div className="flex items-center z-10 w-1/4">
+            <span className="text-white font-bold text-[10px] md:text-xs bg-blue-600/80 px-1.5 py-0.5 rounded border border-blue-400 truncate max-w-[60px] md:max-w-[100px]">
               {playerName}
             </span>
-            {currentMission ? (
-              <div className="flex items-center bg-yellow-500/20 px-1.5 py-0.5 rounded-md border border-yellow-500/50 shrink-0">
-                <span className="text-xs font-bold text-yellow-300 tracking-tight whitespace-nowrap">
-                  {currentMission.action}
-                </span>
-              </div>
-            ) : null}
           </div>
 
-          {/* 스탯 및 종료 영역 */}
-          <div className="flex items-center gap-1.5 flex-shrink-0 text-xs whitespace-nowrap">
+          {/* 중앙: 미션 영역 (절대 위치로 완벽한 중앙 정렬) */}
+          {currentMission ? (
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center bg-yellow-500/10 px-2 py-1 rounded-md border border-yellow-500/30 w-max z-20">
+              <span className="text-xs md:text-sm font-bold text-yellow-400 mr-1.5">미션:</span>
+              <span className="text-sm md:text-base font-black text-white tracking-tight whitespace-nowrap">
+                {currentMission.action}
+              </span>
+            </div>
+          ) : null}
+
+          {/* 오른쪽: 스탯 및 종료 영역 */}
+          <div className="flex items-center justify-end gap-1 md:gap-1.5 z-10 w-auto text-[10px] md:text-xs whitespace-nowrap">
             <div className="font-semibold text-blue-300">S:{score}</div>
-            <div className="font-semibold text-purple-300">C:{combo}</div>
+            <div className="font-semibold text-purple-300 hidden sm:block">C:{combo}</div>
             <div className="font-semibold text-pink-300">X:{shotsLeft}</div>
             <button 
               onClick={onExit}
-              className="ml-0.5 px-1.5 py-0.5 bg-red-600/80 hover:bg-red-500 text-white font-black rounded transition-colors border border-red-400"
+              className="ml-0.5 px-2 py-0.5 bg-red-600/80 hover:bg-red-500 text-white font-black rounded transition-colors border border-red-400"
             >
               X
             </button>

@@ -251,7 +251,6 @@ export class Grid {
       const keys = [activeKey, ...path.map(b => b.key)];
       const match = findMatchingShortcut(keys);
       if (match) {
-        formsShortcut = true;
         if (keys.length === 3) canComplete3Key = true;
       }
 

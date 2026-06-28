@@ -132,7 +132,6 @@ export default function App() {
               <button 
                 onClick={() => {
                   setIsGameOver(true);
-                  setGameState('gameover');
                 }} 
                 className="ml-2 px-4 py-1 md:py-2 bg-red-600/80 hover:bg-red-500 text-white font-bold rounded-lg transition-colors border border-red-400 shadow-[0_0_10px_rgba(220,38,38,0.5)]"
               >

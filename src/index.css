@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #030712; /* Tailwind gray-950 */
+  color: #fff;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  overflow: hidden; /* Prevent scrolling on mobile during game */
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+@keyframes popup {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  10% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  20% { transform: translate(-50%, -50%) scale(1); }
+  80% { opacity: 1; transform: translate(-50%, -80%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -100%) scale(0.8); }
+}
+
+.popup-animation {
+  animation: popup 3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes shake {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-5px, 5px); }
+  40% { transform: translate(5px, -5px); }
+  60% { transform: translate(-5px, -5px); }
+  80% { transform: translate(5px, 5px); }
+  100% { transform: translate(0, 0); }
+}
+
+.shake-animation {
+  animation: shake 0.3s ease-in-out;
+}

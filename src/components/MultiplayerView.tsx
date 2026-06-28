@@ -371,7 +371,7 @@ export const MultiplayerView: React.FC<MultiplayerViewProps> = ({ mode, onExit }
       {/* My View */}
       <div id="player-me" className="flex-1 min-w-[200px] w-full flex flex-col justify-start shrink-0 h-full relative pt-2" style={{ maxWidth: 'calc((100vh - 145px) * 0.75)' }}>
         {/* 상단 통합 메뉴바 */}
-        <div className="flex items-center justify-center bg-gray-900/80 backdrop-blur-md px-2 md:px-5 py-2 md:py-3 rounded-xl border border-gray-700 shadow-xl mb-1 z-10 relative w-full gap-2 md:gap-4 flex-wrap">
+        <div className="flex items-center justify-center bg-gray-900/80 backdrop-blur-md px-2 md:px-5 py-2 md:py-3 rounded-xl border border-gray-700 shadow-xl mb-1 z-10 relative w-full gap-2 md:gap-4 flex-wrap shrink-0 h-fit">
           {/* 나의 아이디 및 미션 영역 */}
           <div className="flex items-center flex-shrink-0 gap-2 md:gap-3">
             <span className="text-white font-black text-sm md:text-lg bg-blue-600/80 px-2 md:px-3 py-1 rounded border border-blue-400 shrink-0">
